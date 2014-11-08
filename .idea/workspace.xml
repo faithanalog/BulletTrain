@@ -2,31 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="3024527d-fda7-4c78-a87c-53ee72a428c6" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/windows/OpenAL32.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/windows/OpenAL64.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/windows/jinput-dx8.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/windows/jinput-dx8_64.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/windows/jinput-raw.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/windows/jinput-raw_64.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/linux/libjinput-linux.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/linux/libjinput-linux64.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/macosx/libjinput-osx.jnilib" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/macosx/liblwjgl.jnilib" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/linux/liblwjgl.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/solaris/liblwjgl.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/linux/liblwjgl64.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/solaris/liblwjgl64.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/linux/libopenal.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/solaris/libopenal.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/linux/libopenal64.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/solaris/libopenal64.so" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/windows/lwjgl.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/windows/lwjgl64.dll" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/native/macosx/openal.dylib" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/BulletTrain.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/gameclient/gameclient.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gitignore" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/BulletTrain.java" afterPath="$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/BulletTrain.java" />
     </list>
     <ignored path="BulletTrain.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -55,9 +31,50 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0" vertical-offset="112" max-vertical-offset="284">
-              <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+              <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Vec2.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/math/Vec2.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="1530">
+              <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
+              <folding>
+                <element signature="e#322#323#0" expanded="true" />
+                <element signature="e#357#358#0" expanded="true" />
+                <element signature="e#389#390#0" expanded="true" />
+                <element signature="e#425#426#0" expanded="true" />
+                <element signature="e#455#456#0" expanded="true" />
+                <element signature="e#499#500#0" expanded="true" />
+                <element signature="e#825#826#0" expanded="true" />
+                <element signature="e#865#866#0" expanded="true" />
+                <element signature="e#999#1000#0" expanded="true" />
+                <element signature="e#1038#1039#0" expanded="true" />
+                <element signature="e#1473#1474#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Mat3.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/math/Mat3.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0" vertical-offset="584" max-vertical-offset="1632">
+              <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+              <folding>
+                <element signature="e#274#275#0" expanded="true" />
+                <element signature="e#313#314#0" expanded="true" />
+                <element signature="e#362#363#0" expanded="true" />
+                <element signature="e#401#402#0" expanded="true" />
+                <element signature="e#452#453#0" expanded="true" />
+                <element signature="e#495#496#0" expanded="true" />
+                <element signature="e#535#536#0" expanded="true" />
+                <element signature="e#572#573#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -65,8 +82,8 @@
       <file leaf-file-name="BulletTrain.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/BulletTrain.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.76796716" vertical-offset="119" max-vertical-offset="748">
-              <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+            <state vertical-scroll-proportion="0.54209447" vertical-offset="59" max-vertical-offset="884">
+              <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -83,6 +100,8 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/math/Mat3.java" />
+        <option value="$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/math/Vec2.java" />
         <option value="$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/BulletTrain.java" />
       </list>
     </option>
@@ -171,6 +190,32 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="btrain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BulletTrain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="BulletTrain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="gameclient" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="btrain" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="math" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -494,16 +539,16 @@
       <created>1415474208626</created>
       <option name="number" value="Default" />
       <updated>1415474208626</updated>
-      <workItem from="1415474210374" duration="1841000" />
+      <workItem from="1415474210374" duration="4108000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1841000" />
+    <option name="totallyTimeSpent" value="4108000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1456" height="876" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -516,8 +561,8 @@
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3294271" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3294271" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3294271" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24027778" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="IDEtalk Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
@@ -564,16 +609,53 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="289">
-          <caret line="7" column="5" selection-start-line="7" selection-start-column="5" selection-end-line="7" selection-end-column="5" />
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="323">
+          <caret line="10" column="0" selection-start-line="10" selection-start-column="0" selection-end-line="10" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/math/Mat3.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="584" max-vertical-offset="1632">
+          <caret line="61" column="5" selection-start-line="61" selection-start-column="5" selection-end-line="61" selection-end-column="5" />
+          <folding>
+            <element signature="e#274#275#0" expanded="true" />
+            <element signature="e#313#314#0" expanded="true" />
+            <element signature="e#362#363#0" expanded="true" />
+            <element signature="e#401#402#0" expanded="true" />
+            <element signature="e#452#453#0" expanded="true" />
+            <element signature="e#495#496#0" expanded="true" />
+            <element signature="e#535#536#0" expanded="true" />
+            <element signature="e#572#573#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/math/Vec2.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0" vertical-offset="975" max-vertical-offset="1530">
+          <caret line="79" column="30" selection-start-line="79" selection-start-column="30" selection-end-line="79" selection-end-column="30" />
+          <folding>
+            <element signature="e#322#323#0" expanded="true" />
+            <element signature="e#357#358#0" expanded="true" />
+            <element signature="e#389#390#0" expanded="true" />
+            <element signature="e#425#426#0" expanded="true" />
+            <element signature="e#455#456#0" expanded="true" />
+            <element signature="e#499#500#0" expanded="true" />
+            <element signature="e#825#826#0" expanded="true" />
+            <element signature="e#865#866#0" expanded="true" />
+            <element signature="e#999#1000#0" expanded="true" />
+            <element signature="e#1038#1039#0" expanded="true" />
+            <element signature="e#1473#1474#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/gameclient/src/com/unknownloner/btrain/BulletTrain.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.76796716" vertical-offset="119" max-vertical-offset="748">
-          <caret line="29" column="38" selection-start-line="29" selection-start-column="38" selection-end-line="29" selection-end-column="38" />
+        <state vertical-scroll-proportion="0.54209447" vertical-offset="59" max-vertical-offset="884">
+          <caret line="19" column="41" selection-start-line="19" selection-start-column="41" selection-end-line="19" selection-end-column="41" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

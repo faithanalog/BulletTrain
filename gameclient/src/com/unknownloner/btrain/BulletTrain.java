@@ -1,5 +1,7 @@
 package com.unknownloner.btrain;
 
+import com.unknownloner.btrain.math.Mat3;
+import com.unknownloner.btrain.math.Vec2;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
@@ -10,9 +12,15 @@ import java.io.File;
 public class BulletTrain {
 
     public static void main(String[] args) throws Exception {
-        initDisplay();
-        Thread.sleep(1000);
-        Display.destroy();
+//        initDisplay();
+//        Thread.sleep(1000);
+//        Display.destroy();
+
+        Vec2 test = new Vec2(2, 0);
+        Mat3 rot = Mat3.rotation(Math.PI );
+        rot.multVec(test);
+
+        System.out.println(test);
     }
 
     public static void initDisplay() throws LWJGLException {
