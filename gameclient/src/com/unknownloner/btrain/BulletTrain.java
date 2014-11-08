@@ -13,11 +13,18 @@ import java.util.Arrays;
 
 public class BulletTrain {
 
+    static boolean isFullscreen;
+
     public static void main(String[] args) throws Exception {
-//        initDisplay();
+        for (String str : args) {
+            if (str.startsWith("--fullscreen")) {
+                isFullscreen = true;
+            }
+        }
+        initDisplay();
 //        Shader shader = new Shader(Util.readText("/shaders/sprites.vert"), Util.readText("/shaders/sprites.frag"), "Test");
-//        Thread.sleep(1000);
-//        Display.destroy();
+        Thread.sleep(1000);
+        Display.destroy();
 
 //        Vec2 test = new Vec2(2, 0);
 //        Mat3 rot = Mat3.rotation(Math.PI );
@@ -28,7 +35,11 @@ public class BulletTrain {
 
     public static void initDisplay() throws LWJGLException {
         System.setProperty("org.lwjgl.librarypath", nativesPath());
-        Display.setDisplayMode(new DisplayMode(854, 480));
+        if (isFullscreen) {
+            Display.setFullscreen(true);
+        } else {
+            Display.setDisplayMode(new DisplayMode(854, 480));
+        }
         Display.setTitle("Bullet Train");
         Display.create(new PixelFormat().withDepthBits(24));
     }
