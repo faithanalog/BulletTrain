@@ -7,10 +7,12 @@ public abstract class Entity {
 
     public final Vec2 pos = new Vec2();
     public final AABB bounds;
+    public final Level level;
 
     public boolean isDead = false;
 
-    Entity() {
+    Entity(Level level) {
+        this.level = level;
         bounds = new AABB(pos, new Vec2(0, 0));
     }
 
@@ -25,5 +27,7 @@ public abstract class Entity {
     }
 
     public abstract void tick();
+
+    public abstract EntityType type();
 
 }
