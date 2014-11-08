@@ -1,10 +1,7 @@
 package com.unknownloner.btrain;
 
 import com.unknownloner.btrain.gfx.LevelRenderer;
-import com.unknownloner.btrain.gl.Shader;
 import com.unknownloner.btrain.logic.Level;
-import com.unknownloner.btrain.math.Mat3;
-import com.unknownloner.btrain.math.Vec2;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
@@ -12,7 +9,6 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.PixelFormat;
 
 import java.io.File;
-import java.util.Arrays;
 import static org.lwjgl.opengl.GL11.*;
 
 public class BulletTrain {
