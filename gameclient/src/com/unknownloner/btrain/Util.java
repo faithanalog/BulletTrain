@@ -1,9 +1,14 @@
 package com.unknownloner.btrain;
 
+import org.lwjgl.BufferUtils;
+
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.nio.ByteBuffer;
 import java.nio.FloatBuffer;
 
 public class Util {
@@ -56,5 +61,34 @@ public class Util {
         }
         return out;
     }
+
+    public static BufferedImage scale(BufferedImage src, int w, int h) {
+        BufferedImage img = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D g = img.createGraphics();
+        g.setRenderingHint(RenderingHints.KEY_INTERPOLATION, RenderingHints.VALUE_INTERPOLATION_BICUBIC);
+        g.drawImage(src, 0, 0, w, h, null);
+        g.dispose();
+        return img;
+    }
+
+    public static ByteBuffer imgBytesRGBA(BufferedImage img) {
+        int w = img.getWidth();
+        int h = img.getHeight();
+        ByteBuffer bytes = BufferUtils.createByteBuffer(w * h * 4);
+
+        for (int y = 0; y < h; y++) {
+            for (int x = 0; x < w; x++) {
+                int col = img.getRGB(x, y);
+                int a = (col >>> 24) & 0xFF;
+                int r = (col >>> 16) & 0xFF;
+                int g = (col >>> 8) & 0xFF;
+                int b = col & 0xFF;
+                bytes.put((byte)a).put((byte)r).put((byte)g).put((byte)b);
+            }
+        }
+        bytes.flip();
+        return bytes;
+    }
+
 
 }

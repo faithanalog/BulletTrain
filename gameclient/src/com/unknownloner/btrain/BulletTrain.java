@@ -8,7 +8,10 @@ import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.PixelFormat;
 
+import java.awt.image.BufferedImage;
 import java.io.File;
+import java.nio.ByteBuffer;
+
 import static org.lwjgl.opengl.GL11.*;
 
 public class BulletTrain {
@@ -62,6 +65,19 @@ public class BulletTrain {
             suffix = "linux";
         }
         return System.getProperty("user.dir") + File.separator + "native" + File.separator + suffix;
+    }
+
+    public static void setIcon(BufferedImage img) {
+        BufferedImage med = Util.scale(img, 32, 32);
+        BufferedImage small = Util.scale(img, 16, 16);
+
+        ByteBuffer[] bufs = new ByteBuffer[] {
+                Util.imgBytesRGBA(img),
+                Util.imgBytesRGBA(med),
+                Util.imgBytesRGBA(small)
+        };
+
+        Display.setIcon(bufs);
     }
 
 }
