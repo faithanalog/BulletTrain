@@ -52,7 +52,7 @@ public class Shader {
         glDeleteProgram(glProg);
     }
 
-    public int shaderLoc(String uniform) {
+    public int uniformLoc(String uniform) {
         if (uniformMap.containsKey(uniform)) {
             return uniformMap.get(uniform);
         } else {

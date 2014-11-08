@@ -2,13 +2,15 @@
 uniform mat3 u_model;
 uniform vec2 u_screen_size;
 
-layout(location = 0) in vec3 a_position;
-layout(location = 1) in vec4 a_color;
+layout(location = 0) in vec2 a_position;
+layout(location = 1) in vec2 a_texCoords;
 
-out vec4 v_color;
+out vec2 v_texCoords;
 
 void main() {
-    vec3 pos = u_model * a_position;
+    v_texCoords = a_texCoords;
+
+    vec3 pos = u_model * vec3(a_position, 1.0);
 
     vec2 point = pos.xy / pos.z;
 

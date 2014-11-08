@@ -1,6 +1,8 @@
 package com.unknownloner.btrain;
 
+import com.unknownloner.btrain.gfx.LevelRenderer;
 import com.unknownloner.btrain.gl.Shader;
+import com.unknownloner.btrain.logic.Level;
 import com.unknownloner.btrain.math.Mat3;
 import com.unknownloner.btrain.math.Vec2;
 import org.lwjgl.LWJGLException;
@@ -10,6 +12,7 @@ import org.lwjgl.opengl.PixelFormat;
 
 import java.io.File;
 import java.util.Arrays;
+import static org.lwjgl.opengl.GL11.*;
 
 public class BulletTrain {
 
@@ -22,15 +25,17 @@ public class BulletTrain {
             }
         }
         initDisplay();
-//        Shader shader = new Shader(Util.readText("/shaders/sprites.vert"), Util.readText("/shaders/sprites.frag"), "Test");
-        Thread.sleep(1000);
-        Display.destroy();
+        Level level = new Level("TestLevel", "/textures/space.jpg");
+        LevelRenderer renderer = new LevelRenderer(level);
 
-//        Vec2 test = new Vec2(2, 0);
-//        Mat3 rot = Mat3.rotation(Math.PI );
-//        rot.multVec(test);
-//
-//        System.out.println(test);
+        while (!Display.isCloseRequested()) {
+            glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+            renderer.render();
+            Display.update();
+            Display.sync(120);
+        }
+        Display.destroy();
     }
 
     public static void initDisplay() throws LWJGLException {

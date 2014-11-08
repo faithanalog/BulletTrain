@@ -1,5 +1,7 @@
 package com.unknownloner.btrain.math;
 
+import java.nio.FloatBuffer;
+
 public class Mat3 {
 
     public double[] m = new double[9];
@@ -11,6 +13,12 @@ public class Mat3 {
         m[0] = 1;
         m[4] = 1;
         m[8] = 1;
+    }
+
+    public void store(FloatBuffer buf) {
+        for (double d : m) {
+            buf.put((float)d);
+        }
     }
 
     public double get(int row, int col) {

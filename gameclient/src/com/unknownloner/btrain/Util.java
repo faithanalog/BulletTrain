@@ -23,6 +23,15 @@ public class Util {
         return readText(Util.class.getResourceAsStream(path));
     }
 
+    public static boolean isPowerOf2(int num) {
+        int bits = 0;
+        for (int i = 0; i < 32; i++) {
+            bits += (num & 1);
+            num >>>= 1;
+        }
+        return bits == 1;
+    }
+
     /**
      * Converts quads to triangles
      * @param in Quads

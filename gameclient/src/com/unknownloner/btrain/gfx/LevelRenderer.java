@@ -21,6 +21,8 @@ public class LevelRenderer {
     public final Texture levelTex;
 
     private int bgVerts;
+    private Mat3 model = new Mat3();
+    FloatBuffer modelBuf = BufferUtils.createFloatBuffer(9);
 
     public LevelRenderer(Level level) throws IOException {
         this.level = level;
@@ -28,7 +30,7 @@ public class LevelRenderer {
         levelTex = Texture.load(level.background);
 
         bgVerts = glGenBuffers();
-        glBindBuffer(GL_VERTEX_ARRAY, bgVerts);
+
 
         float[] bgVertData = Util.toTris(new float[] {
                 1f, 1f, 1f, 0f,
@@ -39,14 +41,30 @@ public class LevelRenderer {
         }, 4);
         FloatBuffer buf = BufferUtils.createFloatBuffer(bgVertData.length);
         buf.put(bgVertData).flip();
-        glBufferData(GL_VERTEX_ARRAY, buf, GL_STATIC_DRAW);
+        glEnable(GL_ARRAY_BUFFER);
+        glBindBuffer(GL_ARRAY_BUFFER, bgVerts);
+        glBufferData(GL_ARRAY_BUFFER, buf, GL_STATIC_DRAW);
     }
 
     public void render() {
-        glBindBuffer(GL_VERTEX_ARRAY, bgVerts);
         shader.use();
+        glUniform2f(shader.uniformLoc("u_screen_size"), 1.0f, 1.0f);
 
+        modelBuf.clear();
+        model.store(modelBuf);
+        modelBuf.flip();
+        glUniformMatrix3(shader.uniformLoc("u_model"), false, modelBuf);
+        glBindBuffer(GL_ARRAY_BUFFER, bgVerts);
 
+        glEnableVertexAttribArray(0);
+        glEnableVertexAttribArray(1);
+        glVertexAttribPointer(0, 2, GL_FLOAT, false, 4 * 4, 0);
+        glVertexAttribPointer(1, 2, GL_FLOAT, false, 4 * 4, 2 * 4);
+
+        glDrawArrays(GL_TRIANGLES, 0, 6);
+
+        glDisableVertexAttribArray(0);
+        glDisableVertexAttribArray(1);
     }
 
 }

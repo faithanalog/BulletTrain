@@ -1,5 +1,6 @@
 package com.unknownloner.btrain.gl;
 
+import com.unknownloner.btrain.Util;
 import org.lwjgl.BufferUtils;
 
 import javax.imageio.ImageIO;
@@ -18,7 +19,7 @@ public class Texture {
     public Texture() {
         glTex = glGenTextures();
         glBindTexture(GL_TEXTURE_2D, glTex);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     }
 
@@ -39,7 +40,18 @@ public class Texture {
 
         glBindTexture(GL_TEXTURE_2D, glTex);
         glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, w, h, 0, GL_BGRA, GL_UNSIGNED_INT_8_8_8_8_REV, buf);
-        glGenerateMipmap(GL_TEXTURE_2D);
+
+        if (Util.isPowerOf2(w) && Util.isPowerOf2(h)) {
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR_MIPMAP_LINEAR);
+            glGenerateMipmap(GL_TEXTURE_2D);
+        } else {
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
+        }
+
+    }
+
+    public void bind() {
+        glBindTexture(GL_TEXTURE_2D, glTex);
     }
 
     public static Texture load(String path) throws IOException {
