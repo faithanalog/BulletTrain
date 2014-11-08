@@ -6,6 +6,7 @@ import com.unknownloner.btrain.logic.Level;
 import com.unknownloner.btrain.math.Mat3;
 import com.unknownloner.btrain.math.Vec2;
 import org.lwjgl.LWJGLException;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.PixelFormat;
@@ -29,6 +30,11 @@ public class BulletTrain {
         LevelRenderer renderer = new LevelRenderer(level);
 
         while (!Display.isCloseRequested()) {
+            if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+                break;
+            }
+
+
             glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
             renderer.render();
