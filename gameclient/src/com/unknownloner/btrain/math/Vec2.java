@@ -18,6 +18,15 @@ public class Vec2 {
         y *= scalar;
     }
 
+    public void set(double x, double y) {
+        this.x = x;
+        this.y = y;
+    }
+
+    public void set(Vec2 o) {
+        set(o.x, o.y);
+    }
+
     public void normalize() {
         scale(1 / length());
     }

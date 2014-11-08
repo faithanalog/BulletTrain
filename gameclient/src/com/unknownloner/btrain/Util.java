@@ -2,6 +2,7 @@ package com.unknownloner.btrain;
 
 import org.lwjgl.BufferUtils;
 
+import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.BufferedReader;
@@ -26,6 +27,10 @@ public class Util {
 
     public static String readText(String path) throws IOException {
         return readText(Util.class.getResourceAsStream(path));
+    }
+
+    public static BufferedImage readImage(String path) throws IOException {
+        return ImageIO.read(Util.class.getResourceAsStream(path));
     }
 
     public static boolean isPowerOf2(int num) {
@@ -76,17 +81,9 @@ public class Util {
         int h = img.getHeight();
         ByteBuffer bytes = BufferUtils.createByteBuffer(w * h * 4);
 
-        for (int y = 0; y < h; y++) {
-            for (int x = 0; x < w; x++) {
-                int col = img.getRGB(x, y);
-                int a = (col >>> 24) & 0xFF;
-                int r = (col >>> 16) & 0xFF;
-                int g = (col >>> 8) & 0xFF;
-                int b = col & 0xFF;
-                bytes.put((byte)a).put((byte)r).put((byte)g).put((byte)b);
-            }
-        }
-        bytes.flip();
+        int[] d = new int[w * h];
+        img.getRGB(0, 0, w, h, d, 0, w);
+        bytes.asIntBuffer().put(d);
         return bytes;
     }
 

@@ -10,6 +10,7 @@ import org.lwjgl.opengl.PixelFormat;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
+import java.io.IOException;
 import java.nio.ByteBuffer;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -43,7 +44,7 @@ public class BulletTrain {
         Display.destroy();
     }
 
-    public static void initDisplay() throws LWJGLException {
+    public static void initDisplay() throws LWJGLException, IOException {
         System.setProperty("org.lwjgl.librarypath", nativesPath());
         if (isFullscreen) {
             Display.setFullscreen(true);
@@ -51,6 +52,7 @@ public class BulletTrain {
             Display.setDisplayMode(new DisplayMode(854, 480));
         }
         Display.setTitle("Bullet Train");
+        setIcon(Util.readImage("/textures/BulletTrain.png"));
         Display.create(new PixelFormat().withDepthBits(24));
     }
 
@@ -72,9 +74,9 @@ public class BulletTrain {
         BufferedImage small = Util.scale(img, 16, 16);
 
         ByteBuffer[] bufs = new ByteBuffer[] {
-                Util.imgBytesRGBA(img),
+                Util.imgBytesRGBA(small),
                 Util.imgBytesRGBA(med),
-                Util.imgBytesRGBA(small)
+                Util.imgBytesRGBA(img)
         };
 
         Display.setIcon(bufs);
