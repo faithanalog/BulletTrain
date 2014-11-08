@@ -17,7 +17,7 @@ public class BulletTrain {
 
     public static void main(String[] args) throws Exception {
         for (String str : args) {
-            if (str.startsWith("--fullscreen")) {
+            if (str.equalsIgnoreCase("--fullscreen")) {
                 isFullscreen = true;
             }
         }
