@@ -52,7 +52,7 @@ public class BulletTrain {
             Display.setDisplayMode(new DisplayMode(854, 480));
         }
         Display.setTitle("Bullet Train");
-        setIcon(Util.readImage("/textures/BulletTrain.png"));
+        setIcon(Util.readImage("/textures/bulletTrain.png"));
         Display.create(new PixelFormat().withDepthBits(24));
     }
 
