@@ -1,5 +1,6 @@
 package com.unknownloner.btrain;
 
+import com.unknownloner.btrain.gl.Shader;
 import com.unknownloner.btrain.math.Mat3;
 import com.unknownloner.btrain.math.Vec2;
 import org.lwjgl.LWJGLException;
@@ -8,19 +9,21 @@ import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.PixelFormat;
 
 import java.io.File;
+import java.util.Arrays;
 
 public class BulletTrain {
 
     public static void main(String[] args) throws Exception {
 //        initDisplay();
+//        Shader shader = new Shader(Util.readText("/shaders/sprites.vert"), Util.readText("/shaders/sprites.frag"), "Test");
 //        Thread.sleep(1000);
 //        Display.destroy();
 
-        Vec2 test = new Vec2(2, 0);
-        Mat3 rot = Mat3.rotation(Math.PI );
-        rot.multVec(test);
-
-        System.out.println(test);
+//        Vec2 test = new Vec2(2, 0);
+//        Mat3 rot = Mat3.rotation(Math.PI );
+//        rot.multVec(test);
+//
+//        System.out.println(test);
     }
 
     public static void initDisplay() throws LWJGLException {
