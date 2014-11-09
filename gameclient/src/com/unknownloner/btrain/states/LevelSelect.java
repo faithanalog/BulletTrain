@@ -1,8 +1,11 @@
 package com.unknownloner.btrain.states;
 
+import com.unknownloner.btrain.BulletTrain;
 import com.unknownloner.btrain.Util;
+import com.unknownloner.btrain.core.GameStates;
 import com.unknownloner.btrain.gl.Texture;
 import com.unknownloner.btrain.ui.MenuText;
+import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 
 import java.io.IOException;
@@ -16,20 +19,35 @@ public class LevelSelect extends GameState {
 
     int select = 1;
 
+    int textScale = 7;
+
+    String difficultyText = "Difficulty";
+    int difficultyX = (Display.getWidth() - Util.stringWidth(difficultyText, 10)) / 2;
+    int difficultyY = Display.getHeight() * 5 / 6;
+    MenuText difficulty = new MenuText(difficultyText, 10, difficultyX, difficultyY, 1.0f, 1.0f, 0.0f, 1.0f);
+
+
     String easyText = "Easy";
-    int easyX = (Display.getWidth() - Util.stringWidth(easyText, 7)) / 2;
-    int easyY = Display.getHeight() * 5 / 6;
-    MenuText easy = new MenuText(easyText, 7, easyX, easyY, 1.0f, 1.0f, 0.0f, 1.0f);
+    int easyX = (Display.getWidth() - Util.stringWidth(easyText, textScale)) / 2;
+    int easyY = Display.getHeight() * 4 / 6;
+    MenuText easy = new MenuText(easyText, textScale, easyX, easyY, 1.0f, 1.0f, 0.0f, 1.0f);
 
-    String levelText = "Level Select";
-    int levelX = (Display.getWidth() - Util.stringWidth(levelText, 5)) / 2;
-    int levelY = (Display.getHeight() * 11 / 20);
-    MenuText level = new MenuText(levelText, 5, levelX, levelY, 1.0f, 1.0f, 0.0f, 1.0f);
+    String mediumText = "Medium";
+    int mediumX = (Display.getWidth() - Util.stringWidth(mediumText, textScale)) / 2;
+    int mediumY = (Display.getHeight() * 11 / 20);
+    MenuText medium = new MenuText(mediumText, textScale, mediumX, mediumY, 1.0f, 1.0f, 0.0f, 1.0f);
 
-    String exitText = "Exit Game";
-    int exitX = (Display.getWidth() - Util.stringWidth(exitText, 5)) / 2;
-    int exitY = (Display.getHeight() * 7 / 20);
-    MenuText exit = new MenuText(exitText, 5, exitX, exitY, 1.0f, 1.0f, 0.0f, 1.0f);
+    String hardText = "Hard";
+    int hardX = (Display.getWidth() - Util.stringWidth(hardText, textScale)) / 2;
+    int hardY = (Display.getHeight() * 13 / 30);
+    MenuText hard = new MenuText(hardText, textScale, hardX, hardY, 1.0f, 1.0f, 0.0f, 1.0f);
+
+    String backText = "Back";
+    int backX = (Display.getWidth() - Util.stringWidth(hardText, textScale)) / 2;
+    int backY = (Display.getHeight() * 1 / 6);
+    MenuText back = new MenuText(backText, textScale, backX, backY, 1.0f, 1.0f, 0.0f, 1.0f);
+
+    MenuText[] options = {easy, medium, hard, back};
 
     public LevelSelect() throws IOException {
         texture = Texture.load("/textures/space.jpg");
@@ -40,6 +58,27 @@ public class LevelSelect extends GameState {
     }
 
     public void tick(){
+        while (Keyboard.next()) {
+            if (Keyboard.getEventKeyState()) {
+                if (Keyboard.getEventKey() == Keyboard.KEY_UP && select > 0) {
+                    if(options[select].string.charAt(0) == '\u0000')
+                        options[select].string = options[select].string.substring(1);
+                    select--;
+                    options[select].string = "\u0000" + options[select].string;
+                } else if (Keyboard.getEventKey() == Keyboard.KEY_DOWN && select < 4) {
+                    if(options[select].string.charAt(0) == '\u0000')
+                        options[select].string = options[select].string.substring(1);
+                    select++;
+                    options[select].string = "\u0000" + options[select].string;
+                } else if (Keyboard.getEventKey() == Keyboard.KEY_RETURN){
+                    if(select < 3){
+                        BulletTrain.currentGameState = GameStates.IN_LEVEL;
+                    } else if (select == 4){
+                        BulletTrain.currentGameState = GameStates.MAIN_MENU;
+                    }
+                }
+            }
+        }
 
     }
 
@@ -54,7 +93,11 @@ public class LevelSelect extends GameState {
         batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
         batch.drawTexture(texture, 0, 0, Display.getWidth(), Display.getHeight());
 
-        easy.draw(batch);
+        difficulty.draw(batch);
+
+        for(MenuText text: options){
+            text.draw(batch);
+        }
 
         batch.end();
     }
