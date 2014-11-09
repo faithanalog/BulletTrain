@@ -30,6 +30,9 @@ public class BulletTrain {
             if (str.equalsIgnoreCase("--fullscreen")) {
                 isFullscreen = true;
             }
+            if (str.equalsIgnoreCase("--menu")){
+                currentGameState = GameStates.MAIN_MENU;
+            }
         }
         initDisplay();
         GameTick.init();
