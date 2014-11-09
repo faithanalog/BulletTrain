@@ -50,13 +50,13 @@ public class LevelRenderer {
         //Parallax background
         double bx = level.player.bounds.centerX() * PARALLAX_FACTOR % (Display.getWidth() * 3);
         double by = level.player.bounds.centerY() * PARALLAX_FACTOR % (Display.getHeight() * 3);
-        batch.drawTextureUV(levelTex,
+        batch.drawTextureRegion(levelTex,
                 -bx - Display.getWidth(),
                 -by - Display.getHeight(),
-                levelTex.width * 3,
-                levelTex.height * 3,
-                0.0, 0.0,
-                3.0, 3.0);
+                Display.getWidth() * 3,
+                Display.getHeight() * 3,
+                0, 0,
+                Display.getWidth() * 3, Display.getHeight() * 3);
         batch.flush();
 
 
