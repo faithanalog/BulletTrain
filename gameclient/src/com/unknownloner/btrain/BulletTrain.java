@@ -1,12 +1,16 @@
 package com.unknownloner.btrain;
 
+import com.unknownloner.btrain.core.GameStates;
+import com.unknownloner.btrain.core.GameTick;
 import com.unknownloner.btrain.gfx.LevelRenderer;
 import com.unknownloner.btrain.logic.Level;
+import com.unknownloner.btrain.states.GameState;
 import org.lwjgl.LWJGLException;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 import org.lwjgl.opengl.PixelFormat;
+import sun.plugin2.message.GetAppletMessage;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -18,10 +22,10 @@ import static org.lwjgl.opengl.GL11.*;
 public class BulletTrain {
 
     static boolean isFullscreen;
-//    public static GameState currentGameState;
+    public static GameStates currentGameState;
 
     public static void main(String[] args) throws Exception {
-//        currentGameState = GameState.MAIN_MENU;
+        currentGameState = GameStates.MAIN_MENU;
         for (String str : args) {
             if (str.equalsIgnoreCase("--fullscreen")) {
                 isFullscreen = true;
@@ -29,6 +33,7 @@ public class BulletTrain {
         }
         initDisplay();
         Level level = new Level("TestLevel", "/textures/space.jpg");
+        GameTick.init();
         LevelRenderer renderer = new LevelRenderer(level);
 
         while (!Display.isCloseRequested()) {
@@ -39,7 +44,12 @@ public class BulletTrain {
 
             glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-            renderer.render();
+            switch (currentGameState){
+                case MAIN_MENU:
+                    GameTick.tickMainMenu();
+                    break;
+
+            }
             Display.update();
             Display.sync(120);
         }
