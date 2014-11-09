@@ -7,6 +7,7 @@ import com.unknownloner.btrain.gl.Texture;
 import com.unknownloner.btrain.logic.Entity;
 import com.unknownloner.btrain.logic.Level;
 import com.unknownloner.btrain.math.Mat3;
+import com.unknownloner.btrain.ui.MenuText;
 import org.lwjgl.BufferUtils;
 import org.lwjgl.opengl.Display;
 
@@ -67,7 +68,7 @@ public class LevelRenderer {
 
         //Translate everything based on player center
         Mat3 translation = Mat3.translation(Display.getWidth() / 2 - level.player.bounds.centerX(),
-                Display.getHeight() / 6 - level.player.bounds.centerY());
+                Display.getHeight() / 2 - level.player.bounds.centerY());
         shader.uniformMat3("u_model", translation);
 
         //Sort level entities for effecient rendering
@@ -79,6 +80,14 @@ public class LevelRenderer {
             EntityRenderer.renderEntity(batch, e, e.pos.x, e.pos.y);
         }
         batch.flush();
+
+        shader.uniformMat3("u_model", model);
+
+        String health = "Health: " + level.player.health;
+        batch.drawString(health, Display.getWidth() - (Util.stringWidth(health, 3) + 20), Display.getHeight() - 50, 3);
+
+
+
         glDisable(GL_BLEND);
         batch.end();
     }

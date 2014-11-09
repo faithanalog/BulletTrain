@@ -3,7 +3,10 @@ package com.unknownloner.btrain.states;
 import com.unknownloner.btrain.BulletTrain;
 import com.unknownloner.btrain.Util;
 import com.unknownloner.btrain.core.GameStates;
+import com.unknownloner.btrain.core.GameTick;
+import com.unknownloner.btrain.gfx.LevelRenderer;
 import com.unknownloner.btrain.gl.Texture;
+import com.unknownloner.btrain.logic.Level;
 import com.unknownloner.btrain.ui.MenuText;
 import org.lwjgl.input.Keyboard;
 import org.lwjgl.opengl.Display;
@@ -21,7 +24,7 @@ public class LevelSelect extends GameState {
 
     Texture texture;
 
-    int select = 1;
+    int select = 0;
 
     int textScale = 7;
 
@@ -78,6 +81,11 @@ public class LevelSelect extends GameState {
                     options[select].string = "\u0000" + options[select].string;
                 } else if (Keyboard.getEventKey() == Keyboard.KEY_RETURN){
                     if(select < options.length - 1){
+                        try{
+                            GameTick.inGame = new InGame();
+                        }catch (IOException e){
+                            e.printStackTrace();
+                        }
                         BulletTrain.currentGameState = GameStates.IN_LEVEL;
                     } else if (select == options.length - 1){
                         BulletTrain.currentGameState = GameStates.MAIN_MENU;
@@ -92,16 +100,19 @@ public class LevelSelect extends GameState {
                 red = 0.0f;
                 green = 1.0f;
                 blue = 0.0f;
+                InGame.levelName = "bulletTrain";
                 break;
             case 1:
                 red = 1.0f;
                 green = 1.0f;
                 blue = 0.0f;
+                InGame.levelName = "eggs";
                 break;
             case 2:
                 red = 1.0f;
                 green = 0.5f;
                 blue = 0.0f;
+                InGame.levelName = "bigblack";
                 break;
             case 3:
                 red = 0.0f;

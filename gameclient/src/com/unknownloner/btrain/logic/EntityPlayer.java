@@ -7,6 +7,8 @@ public class EntityPlayer extends EntityLiving {
     public Input input;
     public int shootCooldown = 7;
 
+    public int health = 100;
+
     private int shootDelay;
 
 
@@ -18,6 +20,9 @@ public class EntityPlayer extends EntityLiving {
 
     @Override
     public void tick() {
+        if(health <= 0){
+            isDead = true;
+        }
         double vx = 0.0;
         double vy = 0.0;
 
@@ -43,7 +48,6 @@ public class EntityPlayer extends EntityLiving {
 
             move(vel.x, vel.y);
         }
-        move(0, 4.2);
 
         if (shootDelay > 0)
             shootDelay--;

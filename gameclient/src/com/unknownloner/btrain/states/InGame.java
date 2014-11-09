@@ -12,10 +12,11 @@ public class InGame extends GameState {
 
     public Level level;
     public LevelRenderer renderer;
+    public static String levelName;
 
     public InGame() throws IOException {
         super();
-        level = new Level("Test Level", "/textures/space.png");
+        level = new Level(levelName, "/textures/space.png");
         renderer = new LevelRenderer(level);
     }
 
@@ -25,12 +26,14 @@ public class InGame extends GameState {
 
     public void tick() {
         if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+            level.music.clip.stop();
             BulletTrain.currentGameState = GameStates.PAUSED;
-        }
-        if (Keyboard.isKeyDown(Keyboard.KEY_0)) {
-            BulletTrain.currentGameState = GameStates.GAME_OVER;
+            return;
         }
         level.tick();
+        if(!level.music.clip.isActive()){
+            BulletTrain.currentGameState = GameStates.MAIN_MENU;
+        }
     }
 
     public void draw() {

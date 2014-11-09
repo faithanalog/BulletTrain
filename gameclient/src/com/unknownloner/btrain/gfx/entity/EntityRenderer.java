@@ -30,6 +30,7 @@ public abstract class EntityRenderer<T extends Entity> {
         add(EntityType.PLAYER, new PlayerRenderer());
         add(EntityType.BULLET, new BulletRenderer());
         add(EntityType.PLAYER_BULLET, new PlayerBulletRenderer());
+        add(EntityType.ENEMY, new EnemyRenderer());
     }
 
 

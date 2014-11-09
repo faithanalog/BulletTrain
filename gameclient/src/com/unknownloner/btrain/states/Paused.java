@@ -3,6 +3,7 @@ package com.unknownloner.btrain.states;
 import com.unknownloner.btrain.BulletTrain;
 import com.unknownloner.btrain.Util;
 import com.unknownloner.btrain.core.GameStates;
+import com.unknownloner.btrain.core.GameTick;
 import com.unknownloner.btrain.gl.Texture;
 import com.unknownloner.btrain.ui.MenuText;
 import org.lwjgl.input.Keyboard;
@@ -27,17 +28,12 @@ public class Paused extends GameState{
     int pausedY = Display.getHeight() * 3 / 4;
     MenuText paused = new MenuText(pausedText, 10, pausedX, pausedY, 1.0f, 1.0f, 0.0f, 1.0f);
 
-    String resumeText = "Resume";
+    String resumeText = "\u0000Resume";
     int resumeX = (Display.getWidth() - Util.stringWidth(resumeText, 5)) / 2;
-    int resumeY = (Display.getHeight() * 11 / 20);
+    int resumeY = (Display.getHeight() / 2);
     MenuText resume = new MenuText(resumeText, 5, resumeX, resumeY, 1.0f, 1.0f, 0.0f, 1.0f);
 
-    String exitText = "Main Menu";
-    int exitX = (Display.getWidth() - Util.stringWidth(exitText, 5)) / 2;
-    int exitY = (Display.getHeight() * 7 / 20);
-    MenuText exit = new MenuText(exitText, 5, exitX, exitY, 1.0f, 1.0f, 0.0f, 1.0f);
-
-    MenuText[] options = {resume, exit};
+    MenuText[] options = {resume};
 
     public Paused() throws IOException{
         texture = Texture.load("/textures/space.jpg");
@@ -50,29 +46,12 @@ public class Paused extends GameState{
     public void tick() {
         while (Keyboard.next()) {
             if (Keyboard.getEventKeyState()) {
-                if (Keyboard.getEventKey() == Keyboard.KEY_UP && select > 0) {
-                    if(options[select].string.charAt(0) == '\u0000')
-                        options[select].string = options[select].string.substring(1);
-                    if(select!= 0)
-                        select--;
-                    options[select].string = "\u0000" + options[select].string;
-                } else if (Keyboard.getEventKey() == Keyboard.KEY_DOWN && select < 4) {
-                    if(options[select].string.charAt(0) == '\u0000')
-                        options[select].string = options[select].string.substring(1);
-                    if(select != options.length - 1)
-                        select++;
-                    options[select].string = "\u0000" + options[select].string;
-                } else if (Keyboard.getEventKey() == Keyboard.KEY_RETURN){
-                    if(select == 0) {
+                if (Keyboard.getEventKey() == Keyboard.KEY_RETURN){
+                        GameTick.inGame.level.music.clip.start();
                         BulletTrain.currentGameState = GameStates.IN_LEVEL;
-                    } else if (select == 1){
-                        BulletTrain.currentGameState = GameStates.MAIN_MENU;
-                    }
                 }
             }
         }
-        if(options[select].string.charAt(0) != '\u0000')
-            options[select].string = "\u0000" + options[select].string;
     }
 
     public void draw(){

@@ -25,6 +25,10 @@ public class EntityBullet extends Entity {
         if (pos.distTo(level.player.pos) > Math.max(Display.getWidth(), Display.getHeight()) * 2) {
             isDead = true;
         }
+        if(this.bounds.intersects(level.player.bounds)){
+            level.player.health--;
+            isDead = true;
+        }
     }
 
     @Override

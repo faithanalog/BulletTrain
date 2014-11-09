@@ -13,7 +13,7 @@ import java.util.List;
 
 public class EntityMusicShooter extends Entity {
 
-    private Clip clip;
+    public Clip clip;
 
     private List<BeatmapObject> objs = new ArrayList<>();
     private int curObj = 0;
@@ -74,8 +74,10 @@ public class EntityMusicShooter extends Entity {
             if (obj instanceof BeatmapSlider) {
                 bulletQueue += ((BeatmapSlider)obj).repeats;
             }
-            fireBullet();
-            System.out.println("Fire!");
+            int rand = (int) (1 + Math.random() * 3);
+            for(int i = 0; i < rand; i++){
+                fireBullet();
+            }
         }
 
         if (bulletQueueCooldown > 0) {
@@ -84,7 +86,10 @@ public class EntityMusicShooter extends Entity {
         if (bulletQueue > 0 && bulletQueueCooldown == 0) {
             bulletQueue--;
             bulletQueueCooldown = 3;
-            fireBullet();
+            int rand = (int) (1 + Math.random() * 3);
+            for(int i = 0; i < rand; i++){
+                fireBullet();
+            }
         }
     }
 
@@ -92,9 +97,9 @@ public class EntityMusicShooter extends Entity {
         EntityPlayer player = level.player;
 
         int ox = -Display.getWidth() / 2;
-        int oy = Display.getHeight() / 2 - 100;
+        int oy = 0;
 
-        oy += (Math.random() - 0.23) * 475;
+        oy += (Math.random() - 0.5) * 500;
 
         EntityBullet bullet = new EntityBullet(level, player.pos.x + ox, player.pos.y + oy, 8.5, 0.0);
         level.spawnEntity(bullet);

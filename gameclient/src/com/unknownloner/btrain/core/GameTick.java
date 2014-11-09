@@ -9,7 +9,7 @@ public class GameTick {
     static MainMenu mainMenu;
     static LevelSelect levelSelect;
     static Paused paused;
-    static InGame inGame;
+    public static InGame inGame;
     static GameOver gameOver;
 
     public static void init(){
@@ -17,7 +17,6 @@ public class GameTick {
             mainMenu = new MainMenu();
             levelSelect = new LevelSelect();
             paused = new Paused();
-            inGame = new InGame();
             gameOver = new GameOver();
         }catch(IOException e){
             e.printStackTrace();
