@@ -20,8 +20,8 @@ public class GameTick {
     }
 
     public static void tickMainMenu(){
+        mainMenu.tick();
         mainMenu.draw();
-
     }
 
     public static void tickLevelSelect(){
