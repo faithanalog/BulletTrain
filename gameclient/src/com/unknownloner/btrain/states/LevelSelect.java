@@ -5,7 +5,7 @@ import java.io.IOException;
 public class LevelSelect extends GameState{
 
     public LevelSelect() throws IOException {
-        super();
+        super(null);
     }
 
     public void init(){

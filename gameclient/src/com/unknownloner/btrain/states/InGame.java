@@ -5,7 +5,7 @@ import java.io.IOException;
 public class InGame extends GameState{
 
     public InGame() throws IOException {
-        super();
+        super(null);
     }
 
     public void init(){
