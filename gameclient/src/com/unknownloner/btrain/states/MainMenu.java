@@ -1,5 +1,6 @@
 package com.unknownloner.btrain.states;
 
+import com.unknownloner.btrain.Util;
 import com.unknownloner.btrain.gl.Texture;
 import org.lwjgl.opengl.Display;
 
@@ -38,7 +39,8 @@ public class MainMenu extends GameState{
         batch.drawTexture(texture, 0, 0, Display.getWidth(), Display.getHeight());
 
         glUniform2f(shader.uniformLoc("u_screen_size"), Display.getWidth(), Display.getHeight());
-        batch.drawString("Hello World!", 50.0, 50.0, 10);
+        int titleX = (Display.getWidth() - Util.stringWidth("Bullet Train", 10)) / 2;
+        batch.drawString("Bullet Train", titleX, 50.0, 10);
 
         batch.end();
     }
