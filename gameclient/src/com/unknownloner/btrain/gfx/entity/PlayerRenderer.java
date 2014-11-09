@@ -20,7 +20,7 @@ public class PlayerRenderer extends EntityRenderer<EntityPlayer> {
 
     @Override
     public void render(SpriteBatch batch, EntityPlayer entityPlayer, double x, double y) {
-        batch.drawTexture(playerTex, x - 18 - 14, y - 25 - 12);
+        batch.drawTexture(playerTex, x - 32, y - 27);
     }
 
 }
