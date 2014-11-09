@@ -5,6 +5,11 @@ import com.unknownloner.btrain.math.Vec2;
 public class EntityPlayer extends EntityLiving {
 
     public Input input;
+    public int shootCooldown = 7;
+
+    private int shootDelay;
+
+
     public EntityPlayer(Level level, Input input) {
         super(level);
         bounds.size.set(28.0, 24.0);
@@ -36,7 +41,24 @@ public class EntityPlayer extends EntityLiving {
 
             move(vel.x, vel.y);
         }
+
+        if (shootDelay > 0)
+            shootDelay--;
+        if (input.shooting() && shootDelay == 0) {
+            shootDelay = shootCooldown;
+            fireBullet();
+        }
+
         super.tick();
+    }
+
+    public void fireBullet() {
+        EntityBullet left   = new EntityBullet(level, pos.x, pos.y + 8, 10.0, 105 * Math.PI / 180D);
+        EntityBullet center = new EntityBullet(level, pos.x, pos.y + 8, 10.0,  90 * Math.PI / 180D);
+        EntityBullet right  = new EntityBullet(level, pos.x, pos.y + 8, 10.0,  75 * Math.PI / 180D);
+        level.spawnEntity(left);
+        level.spawnEntity(center);
+        level.spawnEntity(right);
     }
 
     @Override

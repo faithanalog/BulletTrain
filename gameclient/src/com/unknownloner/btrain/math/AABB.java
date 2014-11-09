@@ -26,27 +26,27 @@ public class AABB {
     }
 
     public double minX() {
-        return pos.x;
+        return pos.x - size.x * 0.5;
     }
 
     public double minY() {
-        return pos.y;
+        return pos.y - size.y * 0.5;
     }
 
     public double maxX() {
-        return pos.x + size.x;
+        return pos.x + size.x * 0.5;
     }
 
     public double maxY() {
-        return pos.y + size.y;
+        return pos.y + size.y * 0.5;
     }
 
     public double centerX() {
-        return minX() + (maxX() - minX()) * 0.5;
+        return pos.x;
     }
 
     public double centerY() {
-        return minY() + (maxY() - minY()) * 0.5;
+        return pos.y;
     }
 
     /**

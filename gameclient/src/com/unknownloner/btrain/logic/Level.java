@@ -13,6 +13,8 @@ public class Level {
     public List<Entity> entities = new LinkedList<>();
     public EntityPlayer player;
 
+    private List<Entity> spawnQueue = new ArrayList<>();
+
     public Level(String name, String background) {
         this.name = name;
         this.background = background;
@@ -21,10 +23,13 @@ public class Level {
     }
 
     public void spawnEntity(Entity e) {
-        entities.add(e);
+        spawnQueue.add(e);
     }
 
     public void tick() {
+        entities.addAll(spawnQueue);
+        spawnQueue.clear();
+
         //Tick entities
         for (Entity e : entities) {
             e.tick();

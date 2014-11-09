@@ -39,6 +39,12 @@ public class Vec2 {
         return Math.sqrt(lengthSq());
     }
 
+    public double distTo(Vec2 o) {
+        double dx = o.x - x;
+        double dy = o.y - y;
+        return Math.sqrt(dx * dx + dy * dy);
+    }
+
     public void add(Vec2 o) {
         x += o.x;
         y += o.y;
