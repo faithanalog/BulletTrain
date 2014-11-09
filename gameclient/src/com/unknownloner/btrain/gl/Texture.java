@@ -15,6 +15,8 @@ import static org.lwjgl.opengl.GL30.*;
 public class Texture {
 
     public int glTex;
+    public int width;
+    public int height;
 
     public Texture() {
         glTex = glGenTextures();
@@ -48,6 +50,8 @@ public class Texture {
             glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
         }
 
+        width = w;
+        height = h;
     }
 
     public void bind() {
