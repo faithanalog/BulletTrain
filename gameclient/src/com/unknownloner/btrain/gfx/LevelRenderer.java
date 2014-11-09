@@ -47,16 +47,21 @@ public class LevelRenderer {
         shader.uniformMat3("u_model", model);
         batch.setColor(1f, 1f, 1f, 1f);
 
+        int bgHeight = Display.getHeight() / levelTex.height + 1;
+        int bgWidth = Display.getWidth() / levelTex.width + 1;
+
+        bgHeight *= levelTex.height;
+        bgWidth *= levelTex.width;
+
         //Parallax background
-        double bx = level.player.bounds.centerX() * PARALLAX_FACTOR % (Display.getWidth() * 3);
-        double by = level.player.bounds.centerY() * PARALLAX_FACTOR % (Display.getHeight() * 3);
+        int bx = (int)(level.player.bounds.centerX() * PARALLAX_FACTOR) % bgWidth;
+        int by = (int)(level.player.bounds.centerY() * PARALLAX_FACTOR) % bgHeight;
         batch.drawTextureRegion(levelTex,
-                -bx - Display.getWidth(),
-                -by - Display.getHeight(),
-                Display.getWidth() * 3,
-                Display.getHeight() * 3,
                 0, 0,
-                Display.getWidth() * 3, Display.getHeight() * 3);
+                bgWidth,
+                bgHeight,
+                -bx, -by,
+                bgWidth, bgHeight);
         batch.flush();
 
 
