@@ -15,6 +15,10 @@ import static org.lwjgl.opengl.GL20.glUniformMatrix3;
 
 public class LevelSelect extends GameState {
 
+    public float red = 1.0f;
+    public float green = 1.0f;
+    public float blue = 1.0f;
+
     Texture texture;
 
     int select = 1;
@@ -83,6 +87,28 @@ public class LevelSelect extends GameState {
         }
         if(options[select].string.charAt(0) != '\u0000')
             options[select].string = "\u0000" + options[select].string;
+        switch (select){
+            case 0:
+                red = 0.0f;
+                green = 1.0f;
+                blue = 0.0f;
+                break;
+            case 1:
+                red = 1.0f;
+                green = 1.0f;
+                blue = 0.0f;
+                break;
+            case 2:
+                red = 1.0f;
+                green = 0.5f;
+                blue = 0.0f;
+                break;
+            case 3:
+                red = 0.0f;
+                green = 0.0f;
+                blue = 1.0f;
+                break;
+        }
     }
 
     public void draw(){
@@ -93,7 +119,7 @@ public class LevelSelect extends GameState {
         model.store(modelBuf);
         modelBuf.flip();
         glUniformMatrix3(shader.uniformLoc("u_model"), false, modelBuf);
-        batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
+        batch.setColor(red, green, blue, 1.0f);
         batch.drawTexture(texture, 0, 0, Display.getWidth(), Display.getHeight());
 
         difficulty.draw(batch);

@@ -23,22 +23,22 @@ public class GameOver extends GameState{
     String gameOverText = "GAME OVER!";
     int gameOverX = (Display.getWidth() - Util.stringWidth(gameOverText, 10)) / 2;
     int gameOverY = Display.getHeight() * 5 / 6;
-    MenuText gameOver = new MenuText(gameOverText, 10, gameOverX, gameOverY, 1.0f, 1.0f, 1.0f, 1.0f);
+    MenuText gameOver = new MenuText(gameOverText, 10, gameOverX, gameOverY, 1.0f, 1.0f, 0.0f, 1.0f);
 
     String menuText = "Main Menu";
     int menuX = (Display.getWidth() - Util.stringWidth(menuText, 5)) / 2;
     int menuY = (Display.getHeight() * 11 / 20);
-    MenuText menu = new MenuText(menuText, 5, menuX, menuY, 1.0f, 1.0f, 1.0f, 1.0f);
+    MenuText menu = new MenuText(menuText, 5, menuX, menuY, 1.0f, 1.0f, 0.0f, 1.0f);
 
     String exitText = "Exit Game";
     int exitX = (Display.getWidth() - Util.stringWidth(exitText, 5)) / 2;
     int exitY = (Display.getHeight() * 13 / 30);
-    MenuText exit = new MenuText(exitText, 5, exitX, exitY, 1.0f, 1.0f, 1.0f, 1.0f);
+    MenuText exit = new MenuText(exitText, 5, exitX, exitY, 1.0f, 1.0f, 0.0f, 1.0f);
 
     MenuText[] options = {menu, exit};
 
     public GameOver() throws IOException {
-        texture = Texture.load("/textures/vignette.png");
+        texture = Texture.load("/textures/space.jpg");
     }
 
     public void init() {
