@@ -16,10 +16,10 @@ public class LevelSelect extends GameState {
 
     int select = 1;
 
-    String titleText = "Bullet Train";
-    int titleX = (Display.getWidth() - Util.stringWidth(titleText, 10)) / 2;
-    int titleY = Display.getHeight() * 3 / 4;
-    MenuText title = new MenuText(titleText, 10, titleX, titleY, 1.0f, 1.0f, 0.0f, 1.0f);
+    String easyText = "Easy";
+    int easyX = (Display.getWidth() - Util.stringWidth(easyText, 7)) / 2;
+    int easyY = Display.getHeight() * 5 / 6;
+    MenuText easy = new MenuText(easyText, 7, easyX, easyY, 1.0f, 1.0f, 0.0f, 1.0f);
 
     String levelText = "Level Select";
     int levelX = (Display.getWidth() - Util.stringWidth(levelText, 5)) / 2;
@@ -53,6 +53,8 @@ public class LevelSelect extends GameState {
         glUniformMatrix3(shader.uniformLoc("u_model"), false, modelBuf);
         batch.setColor(1.0f, 1.0f, 1.0f, 1.0f);
         batch.drawTexture(texture, 0, 0, Display.getWidth(), Display.getHeight());
+
+        easy.draw(batch);
 
         batch.end();
     }
