@@ -51,6 +51,12 @@ public class BulletTrain {
                 case IN_LEVEL:
                     GameTick.tickGame();
                     break;
+                case GAME_OVER:
+                    GameTick.tickGameOver();
+                    break;
+                case PAUSED:
+                    GameTick.tickPaused();
+                    break;
             }
             Display.update();
             Display.sync(60);

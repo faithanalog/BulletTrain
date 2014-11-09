@@ -27,6 +27,9 @@ public class InGame extends GameState {
         if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
             BulletTrain.currentGameState = GameStates.PAUSED;
         }
+        if (Keyboard.isKeyDown(Keyboard.KEY_0)) {
+            BulletTrain.currentGameState = GameStates.GAME_OVER;
+        }
         level.tick();
     }
 
