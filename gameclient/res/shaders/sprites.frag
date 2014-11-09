@@ -6,4 +6,7 @@ out vec4 color;
 
 void main() {
     color = texture(u_texture, v_texCoords);
+    if (color.a == 0.0) {
+        discard;
+    }
 }

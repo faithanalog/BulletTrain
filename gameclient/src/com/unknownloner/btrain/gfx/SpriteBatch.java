@@ -85,8 +85,12 @@ public class SpriteBatch {
         glDisableVertexAttribArray(1);
     }
 
-    private void flush() {
+    public void flush() {
         verts.flip();
+        if (verts.limit() == 0) {
+            verts.clear();
+            return;
+        }
         glBufferData(GL_ARRAY_BUFFER, verts, GL_STREAM_DRAW);
 
         glVertexAttribPointer(0, 2, GL_FLOAT, false, 4 * 4, 0);
@@ -163,6 +167,30 @@ public class SpriteBatch {
         double u1 = u0 + tw / (double)tex.width;
         double v1 = v0 + th / (double)tex.height;
         drawTextureUV(tex, x, y, w, h, u0, v0, u1, v1);
+    }
+
+    public void drawChar(char c, double x, double y, int scale) {
+        int tx = (c % 16) * 6;
+        int ty = (c / 16) * 8;
+        drawTextureRegion(fontTex, x, y, 6 * scale, 8 * scale, tx, ty, 6, 8);
+    }
+
+    public void drawString(String s, double x, double y, int scale) {
+        int len = s.length();
+        for (int i = 0; i < len; i++) {
+            drawChar(s.charAt(i), x + i * 6 * scale, y, scale);
+        }
+    }
+
+    //Load font texture
+    private static Texture fontTex;
+    static {
+        try {
+            fontTex = Texture.load("/textures/font.png");
+            glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 

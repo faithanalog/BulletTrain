@@ -6,6 +6,7 @@ import com.unknownloner.btrain.gl.Texture;
 import com.unknownloner.btrain.logic.Level;
 import com.unknownloner.btrain.math.Mat3;
 import org.lwjgl.BufferUtils;
+import org.lwjgl.opengl.Display;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL15.*;
@@ -45,6 +46,10 @@ public class LevelRenderer {
         glUniformMatrix3(shader.uniformLoc("u_model"), false, modelBuf);
 
         batch.drawTexture(levelTex, 0.0, 0.0, 1.0, 1.0);
+        batch.flush();
+
+        glUniform2f(shader.uniformLoc("u_screen_size"), Display.getWidth(), Display.getHeight());
+        batch.drawString("Hello World!", 50.0, 50.0, 3);
 
         batch.end();
     }
