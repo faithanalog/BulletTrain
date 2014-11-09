@@ -60,7 +60,7 @@ public class LevelRenderer {
                 0, 0,
                 bgWidth,
                 bgHeight,
-                -bx, -by,
+                bx, -by,
                 bgWidth, bgHeight);
         batch.flush();
 

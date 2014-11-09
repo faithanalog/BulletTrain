@@ -3,6 +3,7 @@ package com.unknownloner.btrain.logic;
 import com.unknownloner.btrain.Util;
 import com.unknownloner.btrain.osuparse.BeatmapObject;
 import com.unknownloner.btrain.osuparse.BeatmapSlider;
+import com.unknownloner.btrain.osuparse.BeatmapSpinner;
 import org.lwjgl.opengl.Display;
 
 import javax.sound.sampled.*;
@@ -18,6 +19,10 @@ public class EntityMusicShooter extends Entity {
     private int curObj = 0;
 
     public boolean firstTick = true;
+
+    public int bulletQueue;
+
+    public int bulletQueueCooldown = 0;
 
 
     EntityMusicShooter(Level level, String map) {
@@ -66,8 +71,20 @@ public class EntityMusicShooter extends Entity {
         BeatmapObject obj = objs.get(curObj);
         if (now >= obj.time) {
             curObj++;
+            if (obj instanceof BeatmapSlider) {
+                bulletQueue += ((BeatmapSlider)obj).repeats;
+            }
             fireBullet();
             System.out.println("Fire!");
+        }
+
+        if (bulletQueueCooldown > 0) {
+            bulletQueueCooldown--;
+        }
+        if (bulletQueue > 0 && bulletQueueCooldown == 0) {
+            bulletQueue--;
+            bulletQueueCooldown = 3;
+            fireBullet();
         }
     }
 
@@ -77,7 +94,9 @@ public class EntityMusicShooter extends Entity {
         int ox = -Display.getWidth() / 2;
         int oy = Display.getHeight() / 2 - 100;
 
-        EntityBullet bullet = new EntityBullet(level, player.pos.x + ox, player.pos.y + oy, 12.0, 0.0);
+        oy += (Math.random() - 0.23) * 475;
+
+        EntityBullet bullet = new EntityBullet(level, player.pos.x + ox, player.pos.y + oy, 8.5, 0.0);
         level.spawnEntity(bullet);
     }
 

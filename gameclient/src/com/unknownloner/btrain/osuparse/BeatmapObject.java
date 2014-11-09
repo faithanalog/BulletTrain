@@ -38,6 +38,14 @@ public abstract class BeatmapObject {
                 length = Integer.parseInt(args[5]);
                 return new BeatmapSpinner(x, y, time, comboType, length);
             default:
+//                var pointArgs = args[5].split("|");
+//                int type = 0;
+//                var points = new List<int>();
+//                for (var i = 1; i < pointArgs.length; i++) {
+//                    var point = pointArgs[i].split(":");
+//                    points.add(int.parse(point[0]));
+//                    points.add(int.parse(point[1]));
+//                }
                 int repeats = Integer.parseInt(args[6]);
                 length = (int)Double.parseDouble(args[7]);
                 return new BeatmapSlider(x, y, time, comboType, repeats, length);

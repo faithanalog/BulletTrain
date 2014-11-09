@@ -38,10 +38,12 @@ public class EntityPlayer extends EntityLiving {
             Vec2 vel = new Vec2(vx, vy);
             vel.normalize();
             vel.scale(3.0);
+            if (vel.y < 0)
+                vel.y *= 0.2;
 
             move(vel.x, vel.y);
         }
-        move(0, 5.0);
+        move(0, 4.2);
 
         if (shootDelay > 0)
             shootDelay--;
