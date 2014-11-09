@@ -12,6 +12,7 @@ public class Level {
 
     public List<Entity> entities = new LinkedList<>();
     public EntityPlayer player;
+    public EntityMusicShooter music;
 
     private List<Entity> spawnQueue = new ArrayList<>();
 
@@ -19,6 +20,7 @@ public class Level {
         this.name = name;
         this.background = background;
         this.player = new EntityPlayer(this, new KeyInput());
+        this.music = new EntityMusicShooter(this, "/maps/bigblack");
         spawnEntity(this.player);
     }
 
@@ -27,6 +29,8 @@ public class Level {
     }
 
     public void tick() {
+        music.tick();
+
         entities.addAll(spawnQueue);
         spawnQueue.clear();
 
