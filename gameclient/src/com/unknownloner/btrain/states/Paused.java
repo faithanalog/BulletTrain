@@ -83,7 +83,7 @@ public class Paused extends GameState{
         model.store(modelBuf);
         modelBuf.flip();
         glUniformMatrix3(shader.uniformLoc("u_model"), false, modelBuf);
-        batch.setColor(1.0f, 0.0f, 0.0f, 1.0f);
+        batch.setColor(0.0f, 0.0f, .75f, 1.0f);
         batch.drawTexture(texture, 0, 0, Display.getWidth(), Display.getHeight());
 
         paused.draw(batch);

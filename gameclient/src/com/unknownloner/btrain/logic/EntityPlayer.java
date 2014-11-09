@@ -41,6 +41,7 @@ public class EntityPlayer extends EntityLiving {
 
             move(vel.x, vel.y);
         }
+        move(0, 5.0);
 
         if (shootDelay > 0)
             shootDelay--;
