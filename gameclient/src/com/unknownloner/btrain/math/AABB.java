@@ -41,6 +41,14 @@ public class AABB {
         return pos.y + size.y;
     }
 
+    public double centerX() {
+        return minX() + (maxX() - minX()) * 0.5;
+    }
+
+    public double centerY() {
+        return minY() + (maxY() - minY()) * 0.5;
+    }
+
     /**
      * Checks if this AABB intserects another AABB
      * @param o Other AABB to check intersection with

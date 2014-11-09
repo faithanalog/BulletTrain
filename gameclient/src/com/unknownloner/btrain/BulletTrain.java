@@ -25,22 +25,19 @@ public class BulletTrain {
     public static GameStates currentGameState;
 
     public static void main(String[] args) throws Exception {
-        currentGameState = GameStates.MAIN_MENU;
+        currentGameState = GameStates.IN_LEVEL;
         for (String str : args) {
             if (str.equalsIgnoreCase("--fullscreen")) {
                 isFullscreen = true;
             }
         }
         initDisplay();
-        Level level = new Level("TestLevel", "/textures/space.jpg");
         GameTick.init();
-        LevelRenderer renderer = new LevelRenderer(level);
 
         while (!Display.isCloseRequested()) {
             if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
                 break;
             }
-
 
             glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
             glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -48,10 +45,12 @@ public class BulletTrain {
                 case MAIN_MENU:
                     GameTick.tickMainMenu();
                     break;
-
+                case IN_LEVEL:
+                    GameTick.tickGame();
+                    break;
             }
             Display.update();
-            Display.sync(120);
+            Display.sync(60);
         }
         Display.destroy();
     }

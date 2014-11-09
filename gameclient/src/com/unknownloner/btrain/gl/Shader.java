@@ -1,5 +1,9 @@
 package com.unknownloner.btrain.gl;
 
+import com.unknownloner.btrain.math.Mat3;
+import org.lwjgl.BufferUtils;
+
+import java.nio.FloatBuffer;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -61,5 +65,14 @@ public class Shader {
             return loc;
         }
     }
+
+    public void uniformMat3(String loc, Mat3 m) {
+        scratch.clear();
+        m.store(scratch);
+        scratch.flip();
+        glUniformMatrix3(uniformLoc(loc), false, scratch);
+    }
+
+    private static FloatBuffer scratch = BufferUtils.createFloatBuffer(9);
 
 }

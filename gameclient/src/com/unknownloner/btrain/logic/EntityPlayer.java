@@ -1,5 +1,7 @@
 package com.unknownloner.btrain.logic;
 
+import com.unknownloner.btrain.math.Vec2;
+
 public class EntityPlayer extends EntityLiving {
 
     public Input input;
@@ -15,18 +17,25 @@ public class EntityPlayer extends EntityLiving {
         double vy = 0.0;
 
         if (input.left()) {
-            vx -= 3.0;
+            vx -= 1.0;
         }
         if (input.right()) {
-            vx += 3.0;
+            vx += 1.0;
         }
         if (input.up()) {
-            vy += 3.0;
+            vy += 1.0;
         }
         if (input.down()) {
-            vy -= 3.0;
+            vy -= 1.0;
         }
-        move(vx, vy);
+
+        if (vx != 0 || vy != 0) {
+            Vec2 vel = new Vec2(vx, vy);
+            vel.normalize();
+            vel.scale(3.0);
+
+            move(vel.x, vel.y);
+        }
         super.tick();
     }
 
