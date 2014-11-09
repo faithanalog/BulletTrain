@@ -1,5 +1,6 @@
 #version 330
 uniform sampler2D u_texture;
+uniform vec4 u_color;
 in vec2 v_texCoords;
 
 out vec4 color;

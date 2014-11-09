@@ -1,9 +1,11 @@
 package com.unknownloner.btrain.gfx;
 
+import com.unknownloner.btrain.Util;
 import com.unknownloner.btrain.gl.Shader;
 import com.unknownloner.btrain.gl.Texture;
 import org.lwjgl.BufferUtils;
 
+import java.io.IOException;
 import java.nio.FloatBuffer;
 
 import static org.lwjgl.opengl.GL11.*;
@@ -21,8 +23,19 @@ public class SpriteBatch {
 
     private boolean isBatching = false;
 
+    private float r, g, b, a;
+
     public SpriteBatch() {
         glBuf = glGenBuffers();
+        r = 1f;
+        g = 1f;
+        b = 1f;
+        a = 1f;
+        try {
+            curShader = new Shader(Util.readText("/shaders/sprites.vert"), Util.readText("/shaders/sprites.frag"), "Spritebatch Shader");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public void setTexture(Texture tex) {
@@ -51,6 +64,24 @@ public class SpriteBatch {
         shader.use();
     }
 
+    public void setColor(float r, float g, float b, float a) {
+        if (!isBatching) {
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            this.a = a;
+            return;
+        }
+        if (r != this.r || g != this.g || b != this.b || a != this.a) {
+            flush();
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            this.a = a;
+            glUniform4f(curShader.uniformLoc("u_color"), r, g, b, a);
+        }
+    }
+
     public Texture getTexture() {
         return curTex;
     }
@@ -59,16 +90,31 @@ public class SpriteBatch {
         return curShader;
     }
 
+    public float getRed() {
+        return r;
+    }
+
+    public float getGreen() {
+        return g;
+    }
+
+    public float getBlue() {
+        return b;
+    }
+
+    public float getAlpha() {
+        return a;
+    }
+
     public void begin() {
         if (isBatching) {
             throw new RuntimeException("Tried to start sprite batching while sprite batching");
         }
         isBatching = true;
-        if (curShader != null)
-            curShader.use();
         if (curTex != null)
             curTex.bind();
         glBindBuffer(GL_ARRAY_BUFFER, glBuf);
+        glUniform4f(curShader.uniformLoc("u_color"), r, g, b, a);
 
         glEnableVertexAttribArray(0);
         glEnableVertexAttribArray(1);
