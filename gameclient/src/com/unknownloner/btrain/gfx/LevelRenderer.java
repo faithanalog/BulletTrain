@@ -53,8 +53,8 @@ public class LevelRenderer {
         batch.drawTextureUV(levelTex,
                 -bx - Display.getWidth(),
                 -by - Display.getHeight(),
-                Display.getWidth() * 3,
-                Display.getHeight() * 3,
+                levelTex.width * 3,
+                levelTex.height * 3,
                 0.0, 0.0,
                 3.0, 3.0);
         batch.flush();
@@ -68,9 +68,13 @@ public class LevelRenderer {
         //Sort level entities for effecient rendering
         Collections.sort(level.entities, entitySorter);
 
+        glEnable(GL_BLEND);
+        glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
         for (Entity e : level.entities) {
             EntityRenderer.renderEntity(batch, e, e.pos.x, e.pos.y);
         }
+        batch.flush();
+        glDisable(GL_BLEND);
         batch.end();
     }
 
