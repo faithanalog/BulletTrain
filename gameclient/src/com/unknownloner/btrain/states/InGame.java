@@ -1,7 +1,10 @@
 package com.unknownloner.btrain.states;
 
+import com.unknownloner.btrain.BulletTrain;
+import com.unknownloner.btrain.core.GameStates;
 import com.unknownloner.btrain.gfx.LevelRenderer;
 import com.unknownloner.btrain.logic.Level;
+import org.lwjgl.input.Keyboard;
 
 import java.io.IOException;
 
@@ -21,6 +24,9 @@ public class InGame extends GameState {
     }
 
     public void tick() {
+        if (Keyboard.isKeyDown(Keyboard.KEY_ESCAPE)) {
+            BulletTrain.currentGameState = GameStates.PAUSED;
+        }
         level.tick();
     }
 

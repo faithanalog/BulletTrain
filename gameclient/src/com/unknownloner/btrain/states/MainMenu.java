@@ -3,6 +3,7 @@ package com.unknownloner.btrain.states;
 import com.unknownloner.btrain.BulletTrain;
 import com.unknownloner.btrain.Util;
 import com.unknownloner.btrain.core.GameStates;
+import com.unknownloner.btrain.core.GameTick;
 import com.unknownloner.btrain.gl.Shader;
 import com.unknownloner.btrain.gl.Texture;
 import com.unknownloner.btrain.ui.MenuText;
@@ -21,7 +22,7 @@ public class MainMenu extends GameState{
 
     Texture texture;
 
-    int select = 1;
+    int select = 0;
 
     String titleText = "Bullet Train";
     int titleX = (Display.getWidth() - Util.stringWidth(titleText, 10)) / 2;
@@ -38,6 +39,8 @@ public class MainMenu extends GameState{
     int exitY = (Display.getHeight() * 7 / 20);
     MenuText exit = new MenuText(exitText, 5, exitX, exitY, 1.0f, 1.0f, 0.0f, 1.0f);
 
+    MenuText[] options = {level, exit};
+
     public MainMenu() throws IOException {
         texture = Texture.load("/textures/space.jpg");
     }
@@ -50,32 +53,30 @@ public class MainMenu extends GameState{
     public void tick(){
         while (Keyboard.next()) {
             if (Keyboard.getEventKeyState()) {
-                if (Keyboard.getEventKey() == Keyboard.KEY_UP && select == 2) {
-                    select = 1;
-                    exit.string = exit.string.substring(1);
-                } else if (Keyboard.getEventKey() == Keyboard.KEY_DOWN && select == 1) {
-                    select = 2;
-                    level.string = level.string.substring(1);
+                if (Keyboard.getEventKey() == Keyboard.KEY_UP && select > 0) {
+                    if(options[select].string.charAt(0) == '\u0000')
+                        options[select].string = options[select].string.substring(1);
+                    if(select!= 0)
+                        select--;
+                    options[select].string = "\u0000" + options[select].string;
+                } else if (Keyboard.getEventKey() == Keyboard.KEY_DOWN && select < 4) {
+                    if(options[select].string.charAt(0) == '\u0000')
+                        options[select].string = options[select].string.substring(1);
+                    if(select != options.length - 1)
+                        select++;
+                    options[select].string = "\u0000" + options[select].string;
                 } else if (Keyboard.getEventKey() == Keyboard.KEY_RETURN){
-                    if(select == 1){
+                    if(select < options.length - 1){
                         BulletTrain.currentGameState = GameStates.LEVEL_SELCET;
-                    } else if (select == 2){
+                    } else if (select == options.length - 1){
                         Display.destroy();
                         System.exit(0);
                     }
                 }
             }
         }
-        switch(select){
-            case 1:
-                if(level.string.charAt(0) != '\u0000')
-                    level.string = "\u0000" + level.string;
-                break;
-            case 2:
-                if(exit.string.charAt(0) != '\u0000')
-                    exit.string = "\u0000" + exit.string;
-                break;
-        }
+        if(options[select].string.charAt(0) != '\u0000')
+            options[select].string = "\u0000" + options[select].string;
     }
 
     public void draw(){

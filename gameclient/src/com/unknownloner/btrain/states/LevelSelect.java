@@ -63,23 +63,26 @@ public class LevelSelect extends GameState {
                 if (Keyboard.getEventKey() == Keyboard.KEY_UP && select > 0) {
                     if(options[select].string.charAt(0) == '\u0000')
                         options[select].string = options[select].string.substring(1);
-                    select--;
+                    if(select!= 0)
+                        select--;
                     options[select].string = "\u0000" + options[select].string;
                 } else if (Keyboard.getEventKey() == Keyboard.KEY_DOWN && select < 4) {
                     if(options[select].string.charAt(0) == '\u0000')
                         options[select].string = options[select].string.substring(1);
-                    select++;
+                    if(select != options.length - 1)
+                        select++;
                     options[select].string = "\u0000" + options[select].string;
                 } else if (Keyboard.getEventKey() == Keyboard.KEY_RETURN){
-                    if(select < 3){
+                    if(select < options.length - 1){
                         BulletTrain.currentGameState = GameStates.IN_LEVEL;
-                    } else if (select == 4){
+                    } else if (select == options.length - 1){
                         BulletTrain.currentGameState = GameStates.MAIN_MENU;
                     }
                 }
             }
         }
-
+        if(options[select].string.charAt(0) != '\u0000')
+            options[select].string = "\u0000" + options[select].string;
     }
 
     public void draw(){
