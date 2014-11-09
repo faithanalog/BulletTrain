@@ -13,21 +13,14 @@ import java.nio.FloatBuffer;
 
 public abstract class GameState {
 
-    public final Shader shader;
+    protected final Shader shader;
     protected SpriteBatch batch;
     protected Mat3 model = new Mat3();
     FloatBuffer modelBuf = BufferUtils.createFloatBuffer(9);
 
-    public GameState(Shader shader) throws IOException {
-
-        if (shader == null) {
-            this.shader = new Shader(Util.readText("/shaders/sprites.vert"), Util.readText("/shaders/sprites.frag"), "Level Shader");
-        } else {
-            this.shader = shader;
-        }
-
+    public GameState() {
         batch = new SpriteBatch();
-        batch.setShader(shader);
+        shader = batch.getShader();
     }
 
     public abstract void init();

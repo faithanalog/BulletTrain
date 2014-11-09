@@ -2,10 +2,10 @@ package com.unknownloner.btrain.states;
 
 import java.io.IOException;
 
-public class InGame extends GameState{
+public class InGame extends GameState {
 
-    public InGame() throws IOException {
-        super(null);
+    public InGame() {
+        super();
     }
 
     public void init(){

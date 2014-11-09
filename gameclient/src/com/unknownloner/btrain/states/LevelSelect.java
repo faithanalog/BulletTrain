@@ -2,10 +2,10 @@ package com.unknownloner.btrain.states;
 
 import java.io.IOException;
 
-public class LevelSelect extends GameState{
+public class LevelSelect extends GameState {
 
     public LevelSelect() throws IOException {
-        super(null);
+        super();
     }
 
     public void init(){

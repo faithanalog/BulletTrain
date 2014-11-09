@@ -113,6 +113,7 @@ public class SpriteBatch {
         isBatching = true;
         if (curTex != null)
             curTex.bind();
+        curShader.use();
         glBindBuffer(GL_ARRAY_BUFFER, glBuf);
         glUniform4f(curShader.uniformLoc("u_color"), r, g, b, a);
 

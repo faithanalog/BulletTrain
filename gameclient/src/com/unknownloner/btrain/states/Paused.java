@@ -4,8 +4,8 @@ import java.io.IOException;
 
 public class Paused extends GameState{
 
-    public Paused() throws IOException {
-        super(null);
+    public Paused() {
+        super();
     }
 
     public void init(){

@@ -18,7 +18,6 @@ import java.nio.FloatBuffer;
 public class LevelRenderer {
 
     public final Level level;
-    public final Shader shader;
     public final Texture levelTex;
 
     private SpriteBatch batch;
@@ -28,15 +27,12 @@ public class LevelRenderer {
 
     public LevelRenderer(Level level) throws IOException {
         this.level = level;
-        shader = new Shader(Util.readText("/shaders/sprites.vert"), Util.readText("/shaders/sprites.frag"), "Level Shader");
         levelTex = Texture.load(level.background);
-
         batch = new SpriteBatch();
-        batch.setShader(shader);
     }
 
     public void render() {
-
+        Shader shader = batch.getShader();
         batch.begin();
         glUniform2f(shader.uniformLoc("u_screen_size"), 1.0f, 1.0f);
 
