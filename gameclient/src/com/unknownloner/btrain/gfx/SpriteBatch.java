@@ -64,8 +64,10 @@ public class SpriteBatch {
             throw new RuntimeException("Tried to start sprite batching while sprite batching");
         }
         isBatching = true;
-        curShader.use();
-        curTex.bind();
+        if (curShader != null)
+            curShader.use();
+        if (curTex != null)
+            curTex.bind();
         glBindBuffer(GL_ARRAY_BUFFER, glBuf);
 
         glEnableVertexAttribArray(0);
@@ -77,6 +79,7 @@ public class SpriteBatch {
             throw new RuntimeException("Ended sprite batching but was not sprite batching");
         }
         flush();
+        isBatching = false;
 
         glDisableVertexAttribArray(0);
         glDisableVertexAttribArray(1);

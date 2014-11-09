@@ -1,6 +1,5 @@
 package com.unknownloner.btrain;
 
-import com.unknownloner.btrain.core.GameState;
 import com.unknownloner.btrain.gfx.LevelRenderer;
 import com.unknownloner.btrain.logic.Level;
 import org.lwjgl.LWJGLException;
@@ -19,10 +18,10 @@ import static org.lwjgl.opengl.GL11.*;
 public class BulletTrain {
 
     static boolean isFullscreen;
-    public static GameState currentGameState;
+//    public static GameState currentGameState;
 
     public static void main(String[] args) throws Exception {
-        currentGameState = GameState.MAIN_MENU;
+//        currentGameState = GameState.MAIN_MENU;
         for (String str : args) {
             if (str.equalsIgnoreCase("--fullscreen")) {
                 isFullscreen = true;

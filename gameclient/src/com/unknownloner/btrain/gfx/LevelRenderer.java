@@ -20,7 +20,8 @@ public class LevelRenderer {
     public final Shader shader;
     public final Texture levelTex;
 
-    private int bgVerts;
+    private SpriteBatch batch;
+
     private Mat3 model = new Mat3();
     FloatBuffer modelBuf = BufferUtils.createFloatBuffer(9);
 
@@ -29,42 +30,23 @@ public class LevelRenderer {
         shader = new Shader(Util.readText("/shaders/sprites.vert"), Util.readText("/shaders/sprites.frag"), "Level Shader");
         levelTex = Texture.load(level.background);
 
-        bgVerts = glGenBuffers();
-
-
-        float[] bgVertData = Util.toTris(new float[] {
-                1f, 1f, 1f, 0f,
-                0f, 1f, 0f, 0f,
-                0f, 0f, 0f, 1f,
-                1f, 0f, 1f, 1f
-
-        }, 4);
-        FloatBuffer buf = BufferUtils.createFloatBuffer(bgVertData.length);
-        buf.put(bgVertData).flip();
-        glEnable(GL_ARRAY_BUFFER);
-        glBindBuffer(GL_ARRAY_BUFFER, bgVerts);
-        glBufferData(GL_ARRAY_BUFFER, buf, GL_STATIC_DRAW);
+        batch = new SpriteBatch();
+        batch.setShader(shader);
     }
 
     public void render() {
-        shader.use();
+
+        batch.begin();
         glUniform2f(shader.uniformLoc("u_screen_size"), 1.0f, 1.0f);
 
         modelBuf.clear();
         model.store(modelBuf);
         modelBuf.flip();
         glUniformMatrix3(shader.uniformLoc("u_model"), false, modelBuf);
-        glBindBuffer(GL_ARRAY_BUFFER, bgVerts);
 
-        glEnableVertexAttribArray(0);
-        glEnableVertexAttribArray(1);
-        glVertexAttribPointer(0, 2, GL_FLOAT, false, 4 * 4, 0);
-        glVertexAttribPointer(1, 2, GL_FLOAT, false, 4 * 4, 2 * 4);
+        batch.drawTexture(levelTex, 0.0, 0.0, 1.0, 1.0);
 
-        glDrawArrays(GL_TRIANGLES, 0, 6);
-
-        glDisableVertexAttribArray(0);
-        glDisableVertexAttribArray(1);
+        batch.end();
     }
 
 }
