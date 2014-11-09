@@ -87,5 +87,9 @@ public class Util {
         return bytes;
     }
 
+    public static int stringWidth(String str, int scale) {
+        return str.length() * 6 * scale;
+    }
+
 
 }

@@ -1,5 +1,6 @@
 package com.unknownloner.btrain.gfx.entity;
 
+import com.unknownloner.btrain.gfx.SpriteBatch;
 import com.unknownloner.btrain.logic.Entity;
 import com.unknownloner.btrain.logic.EntityType;
 
@@ -11,7 +12,7 @@ public abstract class EntityRenderer<T extends Entity> {
      * @param x X offset
      * @param y Y offset
      */
-    public abstract void render(T t, double x, double y);
+    public abstract void render(SpriteBatch batch, T t, double x, double y);
 
 
     //Static components of this nonsense
@@ -21,8 +22,8 @@ public abstract class EntityRenderer<T extends Entity> {
         renderers[t.ordinal()] = r;
     }
 
-    public static void renderEntity(Entity e, double x, double y) {
-        renderers[e.type().ordinal()].render(e, x, y);
+    public static void renderEntity(SpriteBatch batch, Entity e, double x, double y) {
+        renderers[e.type().ordinal()].render(batch, e, x, y);
     }
 
     static {

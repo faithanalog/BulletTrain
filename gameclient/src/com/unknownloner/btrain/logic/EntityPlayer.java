@@ -5,7 +5,7 @@ public class EntityPlayer extends EntityLiving {
     public Input input;
     public EntityPlayer(Level level, Input input) {
         super(level);
-        bounds.size.set(64.0, 64.0);
+        bounds.size.set(28.0, 24.0);
         this.input = input;
     }
 
