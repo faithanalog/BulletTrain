@@ -48,6 +48,9 @@ public class BulletTrain {
                 case MAIN_MENU:
                     GameTick.tickMainMenu();
                     break;
+                case LEVEL_SELCET:
+                    GameTick.tickLevelSelect();
+                    break;
                 case IN_LEVEL:
                     GameTick.tickGame();
                     break;

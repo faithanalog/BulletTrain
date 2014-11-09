@@ -1,6 +1,8 @@
 package com.unknownloner.btrain.states;
 
+import com.unknownloner.btrain.BulletTrain;
 import com.unknownloner.btrain.Util;
+import com.unknownloner.btrain.core.GameStates;
 import com.unknownloner.btrain.gl.Shader;
 import com.unknownloner.btrain.gl.Texture;
 import com.unknownloner.btrain.ui.MenuText;
@@ -54,6 +56,13 @@ public class MainMenu extends GameState{
                 } else if (Keyboard.getEventKey() == Keyboard.KEY_DOWN && select == 1) {
                     select = 2;
                     level.string = level.string.substring(1);
+                } else if (Keyboard.getEventKey() == Keyboard.KEY_RETURN){
+                    if(select == 1){
+                        BulletTrain.currentGameState = GameStates.LEVEL_SELCET;
+                    } else if (select == 2){
+                        Display.destroy();
+                        System.exit(0);
+                    }
                 }
             }
         }
