@@ -14,6 +14,7 @@ public class EntityBullet extends Entity {
         pos.y = y;
         this.speed = speed;
         this.rotation = rotation;
+        this.bounds.size.set(12, 12);
     }
 
     @Override

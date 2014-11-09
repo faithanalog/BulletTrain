@@ -28,6 +28,7 @@ public abstract class EntityRenderer<T extends Entity> {
 
     static {
         add(EntityType.PLAYER, new PlayerRenderer());
+        add(EntityType.BULLET, new BulletRenderer());
     }
 
 
