@@ -5,15 +5,14 @@ import com.unknownloner.btrain.gl.Texture;
 import com.unknownloner.btrain.logic.EntityBullet;
 
 import java.io.IOException;
-import java.util.Random;
 
-public class BulletRenderer extends EntityRenderer<EntityBullet> {
+public class PlayerBulletRenderer extends EntityRenderer<EntityBullet> {
 
     Texture bullet;
 
-    public BulletRenderer() {
+    public PlayerBulletRenderer() {
         try {
-            bullet = Texture.load("/textures/entities/bullet.png");
+            bullet = Texture.load("/textures/entities/bulletPlayer.png");
         } catch (IOException e) {
             e.printStackTrace();
         }

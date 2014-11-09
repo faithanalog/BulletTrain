@@ -56,9 +56,9 @@ public class EntityPlayer extends EntityLiving {
     }
 
     public void fireBullet() {
-        EntityBullet left   = new EntityBullet(level, pos.x, pos.y + 8, 10.0, 105 * Math.PI / 180D);
-        EntityBullet center = new EntityBullet(level, pos.x, pos.y + 8, 10.0,  90 * Math.PI / 180D);
-        EntityBullet right  = new EntityBullet(level, pos.x, pos.y + 8, 10.0,  75 * Math.PI / 180D);
+        EntityPlayerBullet left   = new EntityPlayerBullet(level, pos.x, pos.y + 8, 10.0, 105 * Math.PI / 180D);
+        EntityPlayerBullet center = new EntityPlayerBullet(level, pos.x, pos.y + 8, 10.0,  90 * Math.PI / 180D);
+        EntityPlayerBullet right  = new EntityPlayerBullet(level, pos.x, pos.y + 8, 10.0,  75 * Math.PI / 180D);
         level.spawnEntity(left);
         level.spawnEntity(center);
         level.spawnEntity(right);
